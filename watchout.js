@@ -4,15 +4,19 @@
 
 // var random = ( Math.random() )*800
 
+var dataArray = [ [100,400],[200,400],[300,400],[400,400],[500,400],[600,400],
+[100,300],[200,300],[300,300],[400,300],[500,300],[600,300] ];
 // appending svg container to gameboard, and setting svg's dimensions
 var svg = d3.select(".gameboard")
 		.append("svg")
     .attr("height", 800)
     .attr("width", 800);
 
+// what does the parameter for selectAll do?
+
 //	selects svg container, then selects all images
-var aRock = d3.select("svg").selectAll("image")
-		.data([ [100,400],[200,400],[300,400],[400,400],[500,400],[600,400] ])
+var aRock = d3.select("svg").selectAll()
+		.data(dataArray)
 		// creates nodes for nodeless data:
 		.enter()
 		// appends image nodes to current selection:
@@ -28,6 +32,16 @@ var aRock = d3.select("svg").selectAll("image")
 		.attr("y", function(d) {
 			return d[1];
 		})
+
+var falcon = d3.select("svg").selectAll()
+		.data([1])
+		.enter()
+		.append("image")
+		.attr("xlink:href", "falcon.png")
+		.attr("width", 300)
+		.attr("height", 300)
+		.attr("x", "400")
+		.attr("y", "600")
 
 // var aRock = d3.selectAll("svg")
 // 		.data([50,150,200,250], function(data, b){ return b; })
