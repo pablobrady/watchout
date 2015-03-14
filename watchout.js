@@ -34,14 +34,11 @@ var aRock = d3.select("svg").selectAll()
 			return d[1];
 		})
 
-var drag = d3.behavior.drag().on("drag", function(d,i){
-	d.x += d3.event.dx;
-	d.y += d3.event.dy;
-	d3.select(this)
-	.attr("transform", function(d,i){
-		return "translate(" + [d.x,d.y] + "), rotate(" + d.r + ",160,160),scale("+d.scale+", "+d.scale+")";
-	})
-});
+var drag = d3.behavior.drag()  
+             // .on('dragstart', function() { this.style('fill', 'red'); })
+             .on('drag', function() { console.log( this )})
+             // .on('dragend', function() { this.style('fill', 'black'); });
+
 var falcon = d3.select("svg").selectAll()
 		.data([1])
 		.enter()
@@ -52,34 +49,7 @@ var falcon = d3.select("svg").selectAll()
 		.attr("height", 300)
 		.attr("x", "400")
 		.attr("y", "600")
-		.call(drag);
-
-var ff = d3.select("svg").selectAll(".falcon");
-
-
-// var aRock = d3.selectAll("svg")
-// 		.data([50,150,200,250], function(data, b){ return b; })
-// 		.append("image")
-// 		.attr("xlink:href", "asteroid.png")
-// 		.attr("width", 75)
-// 		.attr("height", 75)
-// 		.attr("x", Math.random()*500)
-// 		.attr("y", Math.random()*500)
-// 		.transition().duration(1000)
-// 		.attr("x", Math.random()*500)
-// 		.attr("y", Math.random()*500)
-
-
-// D3.behavior.drag()
-// 			.on("dragstart", dragstarted)
-// 			.on("drag", dragged)
-// 			.on("dragend", dragended);
-
-
-// .on("click", function() {
-//   if (d3.event.defaultPrevented) return; // click suppressed
-//   console.log("clicked!");
-// });
+		.call(drag)
 
 
 var update = function() {
