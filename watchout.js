@@ -12,6 +12,13 @@ var svg = d3.select(".gameboard")
     .attr("height", 800)
     .attr("width", 800);
 
+d3.select(".gameboard")
+				.on("mousemove", function() {
+    			console.log("MOUSE: " + d3.event.x);
+          d3.select(".falcon").attr("x", d3.event.x - 200/2);
+          d3.select(".falcon").attr("y", d3.event.y - 375/2);
+        } );
+
 // what does the parameter for selectAll do?
 
 var drag = d3.behavior.drag()  
