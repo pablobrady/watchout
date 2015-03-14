@@ -14,32 +14,11 @@ var svg = d3.select(".gameboard")
 
 // what does the parameter for selectAll do?
 
-//	selects svg container, then selects all images
-var aRock = d3.select("svg").selectAll()
-		.data(dataArray)
-		// creates nodes for nodeless data:
-		.enter()
-		// appends image nodes to current selection:
-		.append("image")
-		// sets attributes for image nodes:
-		.attr("xlink:href", "asteroid.png")
-		.attr("width", 50)
-		.attr("height", 50)
-		.attr("class", "asteroids")
-		.attr("x", function(d) {
-			console.log(d);
-			return d[0];
-		})
-		.attr("y", function(d) {
-			return d[1];
-		})
-
 var drag = d3.behavior.drag()  
              // .on('dragstart', function() { this.style('fill', 'red'); })
              .on('drag', function() { 
              	falcon.attr("x", d3.event.x - 200/2); 
              	falcon.attr("y", d3.event.y - 200/2); 
-             	console.log(falcon);
              } );
              // .on('dragend', function() { this.style('fill', 'black'); });
 
@@ -53,7 +32,40 @@ var falcon = d3.select("svg").selectAll()
 		.attr("height", 200)
 		.attr("x", "400")
 		.attr("y", "400")
-		.call(drag)
+		.call(drag);
+
+
+
+//	selects svg container, then selects all images
+var aRock = d3.select("svg").selectAll()
+		.data(dataArray)
+		// creates nodes for nodeless data:
+		.enter()
+		// appends image nodes to current selection:
+		.append("image")
+		// sets attributes for image nodes:
+		.attr("xlink:href", "asteroid.png")
+		.attr("width", 50)
+		.attr("height", 50)
+		.attr("class", "asteroids")
+		.attr("x", function(d) {
+			return d[0];
+		})
+		.attr("y", function(d) {
+			return d[1];
+		}).on( 'mouseover', function() {
+          // select element in current context
+          d3.select(".gameboard").style("background-color", "red");
+          // d3.select( this )
+          //   // add transition
+          //   .transition()
+          //   // change attribute
+          //   .attr( 'r', 10 );
+        } ).on( 'mouseout', function() {
+        		d3.select(".gameboard").style("background-color", "#ddd");
+        });
+
+
 
 
 var update = function() {
@@ -80,11 +92,11 @@ var update = function() {
 		// .enter()
 		.transition().duration(1000)
 		.attr("x", function(){
-			x = Math.random()*600;
+			x = Math.random()*750;
 			return x;
 		})
 		.attr("y", function(){
-			y = Math.random()*600;
+			y = Math.random()*750;
 			return y;
 		})
 
