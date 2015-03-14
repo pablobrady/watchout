@@ -34,26 +34,53 @@ var aRock = d3.select("svg").selectAll()
 			return d[1];
 		})
 
-var drag = d3.behavior.drag()  
-             // .on('dragstart', function() { this.style('fill', 'red'); })
-             .on('drag', function() { 
-             	falcon.attr("x", d3.event.x - 200/2); 
-             	falcon.attr("y", d3.event.y - 200/2); 
-             	console.log(falcon);
-             } );
-             // .on('dragend', function() { this.style('fill', 'black'); });
-
+var drag = d3.behavior.drag().on("drag", function(d,i){
+	d.x += d3.event.dx;
+	d.y += d3.event.dy;
+	d3.select(this)
+	.attr("transform", function(d,i){
+		return "translate(" + [d.x,d.y] + "), rotate(" + d.r + ",160,160),scale("+d.scale+", "+d.scale+")";
+	})
+});
 var falcon = d3.select("svg").selectAll()
 		.data([1])
 		.enter()
 		.append("image")
 		.attr("class", "falcon")
 		.attr("xlink:href", "falcon.png")
-		.attr("width", 200)
-		.attr("height", 200)
+		.attr("width", 300)
+		.attr("height", 300)
 		.attr("x", "400")
-		.attr("y", "400")
-		.call(drag)
+		.attr("y", "600")
+		.call(drag);
+
+var ff = d3.select("svg").selectAll(".falcon");
+
+
+
+// var aRock = d3.selectAll("svg")
+// 		.data([50,150,200,250], function(data, b){ return b; })
+// 		.append("image")
+// 		.attr("xlink:href", "asteroid.png")
+// 		.attr("width", 75)
+// 		.attr("height", 75)
+// 		.attr("x", Math.random()*500)
+// 		.attr("y", Math.random()*500)
+// 		.transition().duration(1000)
+// 		.attr("x", Math.random()*500)
+// 		.attr("y", Math.random()*500)
+
+
+// D3.behavior.drag()
+// 			.on("dragstart", dragstarted)
+// 			.on("drag", dragged)
+// 			.on("dragend", dragended);
+
+
+// .on("click", function() {
+//   if (d3.event.defaultPrevented) return; // click suppressed
+//   console.log("clicked!");
+// });
 
 
 var update = function() {

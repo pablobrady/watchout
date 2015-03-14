@@ -91,30 +91,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "watchout.js",
-			"settings":
-			{
-				"buffer_size": 3640,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 553,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "styles.css",
-			"settings":
-			{
-				"buffer_size": 398,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -172,6 +148,9 @@
 	],
 	"file_history":
 	[
+		"/Users/student/Documents/MKS15-watchout/styles.css",
+		"/Users/student/Documents/MKS15-watchout/index.html",
+		"/Users/student/Documents/MKS15-watchout/watchout.js",
 		"/Users/student/Documents/MKS15-n-queens/src/Board.js",
 		"/Users/student/Documents/MKS15-n-queens/src/solvers.js",
 		"/Users/student/Desktop/MKS15-subclass-dance-party/src/bubbleDancer.js",
@@ -224,6 +203,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"123819023.1231293801923",
+			"apply",
+			"falcon",
 			"update",
 			".attr(\"height\", 800)\n    .attr(\"width\", 1920);",
 			"checkRow",
@@ -282,95 +264,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "watchout.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3640,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								511,
-								511
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 158.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 553,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								423,
-								423
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "styles.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 398,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
