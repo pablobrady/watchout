@@ -3,6 +3,15 @@
 // var data = [random, random, random, random, random, random, random, random];
 
 // var random = ( Math.random() )*800
+var collisions = 0;
+var currentScore = 0;
+var highScore = 0;
+setInterval(function(){ 
+	currentScore++;
+	d3.select(".current span").text(currentScore);
+	highScore = Math.max(currentScore, highScore);
+	d3.select(".high span").text(highScore);
+}, 100);
 
 var dataArray = [ [100,400],[200,400],[300,400],[400,400],[500,400],[600,400],
 [100,300],[200,300],[300,300],[400,300],[500,300],[600,300] ];
@@ -63,13 +72,11 @@ var aRock = d3.select("svg").selectAll()
 		}).on( 'mouseover', function() {
           // select element in current context
           d3.select(".gameboard").style("background-color", "red");
-          // d3.select( this )
-          //   // add transition
-          //   .transition()
-          //   // change attribute
-          //   .attr( 'r', 10 );
         } ).on( 'mouseout', function() {
-        		d3.select(".gameboard").style("background-color", "#ddd");
+        		d3.select(".gameboard").style("background-color", "#000");
+          	currentScore = 0;
+          	collisions++;
+          	d3.select(".collisions span").text(collisions);
         });
 
 

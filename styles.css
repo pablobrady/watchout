@@ -16,7 +16,7 @@ Feel free to use it if you like. */
 
 .gameboard {
 	border: solid 1px;
-	background-color: #eee;
+	background-color: #000;
 	width: 800px;
 	height: 800px;
 }
