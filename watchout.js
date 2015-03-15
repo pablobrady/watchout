@@ -23,7 +23,6 @@ var svg = d3.select(".gameboard")
 
 d3.select(".gameboard")
 				.on("mousemove", function() {
-    			console.log("MOUSE: " + d3.event.x);
           d3.select(".falcon").attr("x", d3.event.x - 200/2);
           d3.select(".falcon").attr("y", d3.event.y - 375/2);
         } );
@@ -50,7 +49,28 @@ var falcon = d3.select("svg").selectAll()
 		.attr("y", "400")
 		.call(drag);
 
+var explode = function(n) {
+	console.log("explode");
+	if (n > 9){
+		return;
+	}
 
+	d3.select("svg").selectAll()
+		.data([1])
+		.enter()
+		.append("image")
+		.attr("xlink:href", "resources/explode" + n + ".png")
+		.attr("width", 150)
+		.attr("height", 150)
+		.attr("x", d3.event.x - 40)
+		.attr("y", d3.event.y - 130)
+
+	window.setTimeOut(function(){
+		explode(n+1);
+	}, 100)
+
+
+};
 
 //	selects svg container, then selects all images
 var aRock = d3.select("svg").selectAll()
@@ -72,33 +92,18 @@ var aRock = d3.select("svg").selectAll()
 		}).on( 'mouseover', function() {
           // select element in current context
           d3.select(".gameboard").style("background-color", "red");
+					currentScore = 0;
+					collisions++;
+					d3.select(".collisions span").text(collisions);
+
+					// explode(1);
+
         } ).on( 'mouseout', function() {
         		d3.select(".gameboard").style("background-color", "#000");
-          	currentScore = 0;
-          	collisions++;
-          	d3.select(".collisions span").text(collisions);
         });
 
 
-
-
 var update = function() {
-
-	// var positions = [];
-	// for (var i=0; i<6; i++){
-	// 	var t = [];
-	// 	var rx = Math.floor(Math.random() * 600);
-	// 	var ry = Math.floor(Math.random() * 600);
-	// 	t.push(rx);
-	// 	t.push(ry);
-	// 	positions.push(t);
-	// }
-	// console.log(" positions = ", positions);
-
-	// var genRandom = function(){
-	// 	var result = Math.random()*600;
-	// 	return result;
-	// }
 
 	d3.select("svg").selectAll(".asteroids")
 		// .data(positions)
@@ -114,56 +119,6 @@ var update = function() {
 			return y;
 		})
 
-
-
-		// d3.select("avg").selectAll('.falcon').on('click', function() { alert('Hi!'); } );
-
-// 		// d3.select("svg")
-// 		// 	.data([100, 200])
-// 		// 	.enter()
-// 		// 	.append()
-
-
-//   // DATA JOIN
-//   // Join new data with old elements, if any.
-//   var image = svg.selectAll("image")
-//       .data(data, function(d) { return d; });
-
-//   // UPDATE
-//   // Update old elements as needed.
-//   image.attr("x", "update");
-
-//   // ENTER
-//   // Create new elements as needed.
-//   image.enter().append("image")
-//       .attr("x", "enter")
-//       .attr("y", "enter")
-//       .text(function(d) { return d; });
-
-// //   // ENTER + UPDATE
-// //   // Appending to the enter selection expands the update selection to include
-// //   // entering elements; so, operations on the update selection after appending to
-// //   // the enter selection will apply to both entering and updating nodes.
-// //   text.attr("x", function(d, i) { return i * 32; })
-
-// //   // EXIT
-// //   // Remove old elements as needed.
-// //   text.exit().remove();
-// // }
-
-// // // The initial display.
-// // update(alphabet);
-
-	// Grab a random sample of letters from the alphabet, in alphabetical order.
-
-// // // Shuffles the input array.
-// // function shuffle(array) {
-// //   var m = array.length, t, i;
-// //   while (m) {
-// //     i = Math.floor(Math.random() * m--);
-// //     t = array[m], array[m] = array[i], array[i] = t;
-// //   }
-// //   return array;
 };
 
 var timer = setInterval(update, 1500);
