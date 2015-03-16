@@ -4,19 +4,34 @@
 Feel free to use it if you like. */
 
 .scoreboard {
-	background-color: #eee;
-	border: solid 1px;
-	display: block;
-	width: 200px;
-	left: 1920px;
-	font-family: sans-serif;
-	padding: 10px;
-	margin-bottom: 10px;
+  background-color: #eee;
+  border: solid 1px;
+  display: block;
+  width: 150px;
+  font-family: sans-serif;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 50px;
 }
 
+.titleboard {
+  position: absolute;
+  top: 8px;
+  left: 190px;
+  background-color: #fdf;
+  border: solid 1px;
+  display: block;
+  width: 598px;
+  font-family: sans-serif;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+
 .gameboard {
-	border: solid 1px;
-	background-color: #000;
-	width: 800px;
-	height: 800px;
+  border: solid 1px;
+  background-color: #000;
+  width: 800px;
+  height: 800px;
 }
